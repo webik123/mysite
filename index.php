@@ -18,14 +18,14 @@
 			<!-- Навигация -->
 			
 			<ul>
-				<li><a href='index.php'>Головна</a></li>
-				<li><a href='index.php?id=contact'>Контакти</a></li>
-				<li><a href='index.php?id=about'>Новини</a></li>
+				<li><a href='index.php'>Главная</a></li>
+				<li><a href='films.php'>Фильмы</a></li>
+				<li><a href="insert.php">Добавить фильм</a></li>
 			</ul>
 			<!-- Навигация -->
 		</div>
 		<div class="center" align="center">
-			<h3>Новини</h3>
+			<h3>Новости кино</h3>
 		</div>
 		<div class="right">
 			
