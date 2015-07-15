@@ -1,11 +1,18 @@
-﻿<form method="post" action="insert.php">
+﻿<html>
+	<head>
+		<title>Мій сайт</title>
+		<link rel="stylesheet" href="style.css" type="text/css"/>
+	</head>
+<body>
+<form method="post" action="insert.php">
 
 Название новости<br>
 <input type="text" name="title"><br>
 Текст новости<br>
-<textarea cols="40" rows="10" name="text"></textarea><br>
+<textarea cols="40" rows="10" name="discription"></textarea><br>
 
-<input type="hidden" name="date" value="<?php echo date('Y-m-d');?>"><br>
+<input type="hidden" name="time_created" value="<?php echo date('Y-m-d');?>"><br>
+<input type="hidden" name="time" value="<?php echo date('H:i:s');?>"><br>
 <input type="submit" name="add" value="Отправить">
 
 </form>
@@ -15,27 +22,23 @@
 
 <?php
 
-$connection = mysql_connect('localhost', 'root', '');
-$db = mysql_select_db("mysite");
+include_once("db.php");
 
 if (isset($_POST['add'])) 
 {	
 	$title = strip_tags(trim($_POST['title']));
-	$text = strip_tags(trim($_POST['text']));
-	$date = $_POST['date'];
+	$discription = strip_tags(trim($_POST['discription']));
+	$date = $_POST['time_created'];
+	$time = $_POST['time'];
 
-	mysql_query("
-					INSERT INTO film (title, text, date)
-					VALUES ('$title', '$text', '$date')
-	");
-	echo mysql_error($connection);
+	mysql_query(" INSERT INTO film(title, discription, time_created, time) VALUES ('$title', '$discription', '$date', '$time')");
+	
 	mysql_close();
 
 	echo "Новость успешно добавлена!";
 }
 
-/*if (isset($text)) {
-	echo $text;
-}
-else echo "NO";*/
 ?>
+
+</body>
+</html>

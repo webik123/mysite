@@ -6,23 +6,16 @@
 }
 
 .center {
-	float: left;
-	padding: 0 0 0 80;
+	padding: 30 0 0 50;
 }
 
 .light {
+	margin: 0 20 0 0;
 	float:left;
-	width: 300px;
-	height: 100px;
+	width: 200px;
+	height: 1000px;
 	background-color: #87CEFA;
-}
 
-.right {
-	float:right;
-	width: 300px;
-	height: 100px;
-	background-color: #87CEFA;
-}
 
 .footer {
 	float: left;
