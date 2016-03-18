@@ -7,6 +7,7 @@
 	<body>
 
 		<div class="header" align="center">
+
 			<!-- Верхняя часть страницы -->
 			
 			
@@ -18,24 +19,29 @@
 			<!-- Навигация -->
 			
 			<ul>
-				<li><a href='index.php'>Главная</a></li>
-				<li><a href="insert.php">Добавить фильм</a></li>
+				<?php
+				$leftMenu = array(
+					array('link'=>'Главная', 'href'=>'index.php'),
+					array('link'=>'Добавить фильм', 'href'=>'insert.php'),
+				);
+				?>
+				<li><a href='<?= $leftMenu[0]['href']?>'><?= $leftMenu[0]['link']?></a></li>
+				<li><a href='<?= $leftMenu[1]['href']?>'><?= $leftMenu[1]['link']?></a></li>
 			</ul>
 			<!-- Навигация -->
 		</div>
 		<div class="center">
-			<h3>Новости кино</h3>
+			<h1>Новости кино</h1>
 			<?php
-				include_once("db.php");
+				require_once("db.php");
 
-				$result = mysql_query(" SELECT id, title, time_created, time, discription FROM film ORDER BY `id` DESC LIMIT 5");
-				mysql_close();
-				while($row = mysql_fetch_array($result))
-					{
+				$result = mysqli_query($db, "SELECT * FROM  film ORDER BY `id` DESC LIMIT 5");
+				while($row = mysqli_fetch_array($result))
+								{
 			?>
-					<h3><?php echo $row['title']?></h3>
-					<p><?php echo $row['discription']?></p>
-					<p>Дата публикации <?php echo $row['time_created']?> / <?php echo $row['time']?></p>
+					<h3><?php echo $row['text_1']?></h3>
+					<p><?php echo $row['text_2']?></p>
+					<p>Дата публикации: <?php echo $row['time_created']?> / <?php echo $row['time']?></p>
 					<a href="addit.php?id=<?php echo $row['id']?>">Редактировать новость</a>
 					<hr>
 			<?php }?>
